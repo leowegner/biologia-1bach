@@ -4,6 +4,11 @@ App de estudio interactiva. Empieza con la **Unidad 0** (introducción a la
 investigación científica) y está preparada para ir añadiendo el resto de
 unidades del curso.
 
+🌐 **Web publicada:** https://leowegner.github.io/biologia-1bach/
+
+Cada `push` a `main` reconstruye y vuelve a publicar la web automáticamente
+(mediante GitHub Actions, ver `.github/workflows/deploy.yml`).
+
 ## Cómo arrancarla
 
 ```bash
