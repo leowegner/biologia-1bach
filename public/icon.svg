@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="112" fill="#16335a"/>
+  <!-- Doble hélice: dos sinusoides en oposición de fase.
+       Centro x=256, oscilan +-58px, recorrido vertical de y=120 a y=392. -->
+  <g fill="none" stroke-linecap="round">
+    <path d="M198 120 C 314 174, 314 230, 256 256 C 198 282, 198 338, 314 392"
+          stroke="#ffffff" stroke-width="24"/>
+    <path d="M314 120 C 198 174, 198 230, 256 256 C 314 282, 314 338, 198 392"
+          stroke="#9cc6f0" stroke-width="24"/>
+  </g>
+  <!-- Peldaños horizontales que unen las dos hebras -->
+  <g stroke="#5a9fe0" stroke-width="15" stroke-linecap="round">
+    <line x1="222" y1="150" x2="290" y2="150"/>
+    <line x1="232" y1="186" x2="280" y2="186"/>
+    <line x1="232" y1="326" x2="280" y2="326"/>
+    <line x1="222" y1="362" x2="290" y2="362"/>
+  </g>
+</svg>

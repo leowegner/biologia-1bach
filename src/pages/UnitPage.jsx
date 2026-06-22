@@ -15,6 +15,12 @@ export default function UnitPage() {
 
   const section = unit.sections[activeSection]
 
+  // Cambia de sección y sube al principio (en móvil te quedabas a media página).
+  const goToSection = (index) => {
+    setActiveSection(index)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   return (
     <div className="container unit-layout">
       {/* Navegación lateral por secciones */}
@@ -26,7 +32,7 @@ export default function UnitPage() {
             <li key={s.id}>
               <button
                 className={i === activeSection ? 'active' : ''}
-                onClick={() => setActiveSection(i)}
+                onClick={() => goToSection(i)}
               >
                 <span className="unit-nav__ico" aria-hidden="true">{s.icon}</span>
                 {s.title}
@@ -56,7 +62,7 @@ export default function UnitPage() {
         <nav className="section-pager no-print">
           <button
             disabled={activeSection === 0}
-            onClick={() => setActiveSection((s) => Math.max(0, s - 1))}
+            onClick={() => goToSection(Math.max(0, activeSection - 1))}
           >
             ← Anterior
           </button>
@@ -64,7 +70,7 @@ export default function UnitPage() {
             {activeSection + 1} / {unit.sections.length}
           </span>
           {activeSection < unit.sections.length - 1 ? (
-            <button onClick={() => setActiveSection((s) => Math.min(unit.sections.length - 1, s + 1))}>
+            <button onClick={() => goToSection(Math.min(unit.sections.length - 1, activeSection + 1))}>
               Siguiente →
             </button>
           ) : (
