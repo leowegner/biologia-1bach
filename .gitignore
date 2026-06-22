@@ -1,0 +1,10 @@
+node_modules
+dist
+*.local
+.DS_Store
+
+# Material original de los apuntes (no se redistribuye)
+*.pdf
+
+# Scripts de verificación temporales
+verify*.mjs
