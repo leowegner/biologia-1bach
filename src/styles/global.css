@@ -52,11 +52,15 @@ a:hover { text-decoration: underline; }
   top: 0;
   z-index: 50;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+  /* El fondo azul se extiende bajo la isla/notch del iPhone; el contenido
+     se empuja hacia abajo con el padding del safe-area (ver __inner). */
+  padding-top: env(safe-area-inset-top, 0px);
 }
 .topbar__inner {
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: 0 20px;
+  /* Respeta también los bordes laterales redondeados (modo horizontal). */
+  padding: 0 calc(20px + env(safe-area-inset-right, 0px)) 0 calc(20px + env(safe-area-inset-left, 0px));
   height: 64px;
   display: flex;
   align-items: center;
