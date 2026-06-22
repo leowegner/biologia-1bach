@@ -519,6 +519,11 @@ export const unidad0 = {
           text: 'El libro propone un estudio sobre el **colirrojo real** (*Phoenicurus phoenicurus*) en 4 parcelas forestales (Pinar 1, Pinar 2, Pinsapar 1 y Pinsapar 2), con datos sobre el grosor de los árboles, su densidad, la cobertura del suelo y los árboles muertos en pie. Estas actividades son más abiertas, así que las respuestas son una **guía de cómo enfocarlas**.',
         },
         {
+          type: 'warning',
+          title: 'Ojo: el número de parejas NO está en la tabla',
+          text: 'La tabla del libro solo da las características de los árboles de cada parcela. El número de parejas de colirrojo NO te lo dan: tienes que IMAGINARLO tú, de forma coherente con tu hipótesis (más parejas donde el hábitat es mejor). No te falta ningún dato; inventarlo es parte del ejercicio.',
+        },
+        {
           type: 'activity',
           label: 'Actividad',
           question: 'Plantea una hipótesis acerca de cuál es el hábitat ideal para la reproducción del colirrojo real.',
@@ -534,7 +539,7 @@ export const unidad0 = {
             },
             {
               type: 'p',
-              text: 'La idea clave es fijarse en que los **pinsapares** (bosques más densos y maduros) presentan, en general, mayores porcentajes de árboles gruesos, más cobertura y más árboles muertos en pie que los pinares. La hipótesis debe poder comprobarse correlacionando esas características con el número de parejas reproductoras.',
+              text: 'La idea clave es fijarse en que los **pinsapares** (bosques más densos y maduros) presentan, en general, mayores porcentajes de árboles gruesos, más cobertura y más árboles muertos en pie que los pinares. Mirando la tabla con detalle, el orden de calidad de hábitat sería: **Pinsapar 2 > Pinsapar 1 > Pinar 1 > Pinar 2**. El Pinsapar 2 gana en casi todo (más árboles gruesos, más cobertura y, sobre todo, más árboles muertos en pie donde anidar); el Pinar 2 es el peor (0 árboles gruesos grandes y 0 árboles muertos en pie). La hipótesis debe poder comprobarse correlacionando esas características con el número de parejas reproductoras.',
             },
           ],
         },
@@ -542,7 +547,26 @@ export const unidad0 = {
           type: 'activity',
           label: 'Actividad',
           question: 'Imagina un número de parejas de colirrojo en cada parcela. ¿Por qué importa la correlación y no el número en sí?',
-          answer: 'Porque lo que se busca **no es el dato concreto, sino la tendencia**: si asignas a cada parcela un número de parejas coherente con tu hipótesis (más parejas donde el bosque es más maduro), lo importante es que ese número *aumente o disminuya a la vez* que las características del hábitat (diámetro de los árboles, cobertura, árboles muertos en pie). Esa relación entre dos variables que cambian juntas es lo que se llama **correlación**. Un número aislado no demuestra nada; lo que apoya la hipótesis es ver que las parcelas con mejor hábitat tienen sistemáticamente más parejas.',
+          answerBlocks: [
+            {
+              type: 'p',
+              text: 'Recuerda: **el número de parejas lo inventas tú**. Lo asignas de forma coherente con tu hipótesis, dando más parejas a las parcelas con mejor hábitat. Por ejemplo (las cifras son orientativas, lo que importa es el orden):',
+            },
+            {
+              type: 'table',
+              headers: ['Parcela', 'Calidad del hábitat', 'Parejas (inventadas)'],
+              rows: [
+                ['**Pinsapar 2**', 'La mejor (más árboles gruesos, cobertura y árboles muertos en pie)', '8'],
+                ['**Pinsapar 1**', 'Buena (bosque maduro, algo menos que Pinsapar 2)', '6'],
+                ['**Pinar 1**', 'Regular', '3'],
+                ['**Pinar 2**', 'La peor (0 árboles gruesos grandes, 0 muertos en pie)', '1'],
+              ],
+            },
+            {
+              type: 'p',
+              text: 'Importa **la correlación y no el número en sí** porque lo que se busca no es el dato concreto, sino la *tendencia*: que el número de parejas *suba y baje a la vez* que la calidad del hábitat (más árboles gruesos, más cobertura, más árboles muertos en pie). Esa relación entre dos variables que cambian juntas se llama **correlación**. Un número aislado no demuestra nada; lo que apoya la hipótesis es ver que las parcelas con mejor hábitat tienen sistemáticamente más parejas.',
+            },
+          ],
         },
         {
           type: 'activity',
