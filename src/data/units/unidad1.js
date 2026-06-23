@@ -965,8 +965,11 @@ export const unidad1 = {
       id: 'u1-q21',
       type: 'order',
       question: 'Ordena los glúcidos de menor a mayor número de unidades (de más simple a más complejo):',
-      items: ['Monosacárido', 'Disacárido', 'Polisacárido'],
-      answer: [0, 1, 2],
+      // items barajados; answer apunta al orden correcto de ESTOS items.
+      // items: [Polisacárido(0), Monosacárido(1), Disacárido(2)]
+      // orden correcto: Monosacárido→Disacárido→Polisacárido = [1,2,0]
+      items: ['Polisacárido', 'Monosacárido', 'Disacárido'],
+      answer: [1, 2, 0],
       explanation: 'Monosacárido (1 unidad) → disacárido (2 unidades) → polisacárido (muchas unidades).',
     },
     {

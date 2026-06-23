@@ -633,8 +633,11 @@ export const unidad0 = {
       id: 'u0-q3',
       type: 'order',
       question: 'Ordena las fases del método científico:',
-      items: ['Observación', 'Hipótesis', 'Experimentación', 'Análisis de resultados', 'Conclusión'],
-      answer: [0, 1, 2, 3, 4],
+      // items barajados a propósito; answer apunta al orden correcto de ESTOS items.
+      // items: [Experimentación(0), Conclusión(1), Observación(2), Análisis(3), Hipótesis(4)]
+      // orden correcto: Observación→Hipótesis→Experimentación→Análisis→Conclusión = [2,4,0,3,1]
+      items: ['Experimentación', 'Conclusión', 'Observación', 'Análisis de resultados', 'Hipótesis'],
+      answer: [2, 4, 0, 3, 1],
       explanation: 'Se observa un fenómeno, se formula una hipótesis, se experimenta, se analizan los datos y se concluye.',
     },
     {
@@ -761,8 +764,11 @@ export const unidad0 = {
       id: 'u0-q17',
       type: 'order',
       question: 'Ordena los apartados de un trabajo científico:',
-      items: ['Introducción', 'Material y métodos', 'Resultados', 'Discusión', 'Bibliografía'],
-      answer: [0, 1, 2, 3, 4],
+      // items barajados; answer apunta al orden correcto de ESTOS items.
+      // items: [Resultados(0), Introducción(1), Bibliografía(2), Material y métodos(3), Discusión(4)]
+      // orden correcto: Introducción→Material→Resultados→Discusión→Bibliografía = [1,3,0,4,2]
+      items: ['Resultados', 'Introducción', 'Bibliografía', 'Material y métodos', 'Discusión'],
+      answer: [1, 3, 0, 4, 2],
       explanation: 'Introducción → material y métodos → resultados → discusión → bibliografía (las conclusiones van entre discusión y bibliografía).',
     },
     {
