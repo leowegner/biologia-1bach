@@ -428,20 +428,40 @@ export const unidad0 = {
           type: 'flashcards',
           deckLabel: 'Conceptos U0',
           cards: [
+            // --- Qué es la ciencia ---
             { front: '¿Cuál es el objetivo principal del método científico?', back: 'Minimizar la subjetividad del científico, para que el resultado no dependa de quién lo haga.' },
+            { front: '¿Por qué no todas las ciencias pueden experimentar?', back: 'En astronomía, vulcanología o historia no puedes manipular el objeto: solo observas. La historia, además, es irrepetible.' },
+            { front: 'En ciencias empíricas, ¿algo queda "probado" del todo?', back: 'No. No existe la verificación perfecta; una teoría se acepta mientras funcione, pero podría modificarse.' },
+            { front: '¿Qué es la reproducibilidad y por qué importa?', back: 'Que otros, repitiendo el experimento, obtengan lo mismo. Es lo que hace fiable a un resultado.' },
+            // --- Método científico ---
             { front: '¿Cuáles son las fases del método científico, en orden?', back: 'Observación → Pregunta → Hipótesis → Experimentación → Análisis de resultados → Conclusión → Comunicación.' },
             { front: '¿Qué es una hipótesis?', back: 'Una suposición provisional y comprobable (falsable) que se formula ANTES del experimento.' },
             { front: '¿En qué se diferencia una hipótesis de una conclusión?', back: 'La hipótesis es previa (suposición); la conclusión es posterior, a la vista de los datos.' },
             { front: '¿Qué significa que una hipótesis sea "falsable"?', back: 'Que se puede demostrar falsa: un experimento podría contradecirla. Si no, no es científica.' },
+            { front: '¿Refutar una hipótesis es un fracaso?', back: 'No: es un resultado válido y útil. La ciencia avanza descartando explicaciones equivocadas.' },
+            { front: '¿En qué fase del método se interpretan los datos?', back: 'En la conclusión (y en la discusión del trabajo). En el análisis se organizan; en la conclusión se compara con la hipótesis.' },
+            // --- Variables ---
             { front: '¿Qué es la variable independiente?', back: 'La que el investigador cambia o manipula (la causa).' },
             { front: '¿Qué es la variable dependiente?', back: 'La que se mide para ver el efecto (depende de la independiente).' },
             { front: '¿Qué son las variables controladas?', back: 'Las que se mantienen constantes para aislar la causa y que no influyan en el resultado.' },
+            { front: 'En los jabalíes: ¿cuál es la variable independiente?', back: 'El combate (que haya enfrentamiento o no).' },
+            { front: 'En los jabalíes: ¿cuál es la variable dependiente?', back: 'La concentración de glucocorticoides en sangre.' },
+            { front: '¿Por qué se eligen jabalíes de tamaño similar?', back: 'Para controlar la variable tamaño: que el cambio se deba al combate y no a la diferencia de fuerza.' },
+            { front: '¿Por qué un cercado desconocido para ambos jabalíes?', back: 'Para que ninguno tenga ventaja de "jugar en casa" (controlar la variable territorio).' },
+            // --- Control y doble ciego ---
             { front: '¿Qué es un grupo de control?', back: 'Un grupo idéntico al experimental pero que NO recibe el tratamiento, usado para comparar.' },
+            { front: '¿Qué es el efecto placebo?', back: 'Mejorar solo por creer que se recibe tratamiento. Por eso al control se le da un placebo, para cancelarlo.' },
             { front: '¿Qué es un experimento de doble ciego?', back: 'Aquel en que ni el participante ni el investigador saben quién recibe el tratamiento real, para evitar sesgos.' },
+            { front: '¿Por qué importa que el investigador tampoco sepa quién recibe el tratamiento?', back: 'Porque sin querer podría sesgar las medidas a favor de su hipótesis. El doble ciego lo evita.' },
+            // --- Razonamiento ---
             { front: '¿Qué es la inducción?', back: 'Razonamiento de lo particular a lo general (a partir de casos, una regla general). No es 100% segura.' },
             { front: '¿Qué es la deducción?', back: 'Razonamiento de lo general a lo particular (de una ley, una conclusión sobre un caso). Es segura.' },
+            { front: '¿Por qué la inducción no es 100% segura?', back: 'Porque por muchos casos que veas, siempre podría aparecer una excepción (ej.: cisnes negros).' },
+            // --- Trabajo científico ---
             { front: '¿Cuál es la estructura de un trabajo científico?', back: 'Introducción → Material y métodos → Resultados → Discusión → Conclusiones → Bibliografía.' },
             { front: 'En un trabajo científico, ¿qué va en "Resultados" y qué en "Discusión"?', back: 'Resultados: solo los datos observados. Discusión: la interpretación de qué significan.' },
+            { front: '¿Qué apartado del trabajo garantiza la reproducibilidad?', back: 'Material y métodos: describe con tanto detalle que cualquiera podría repetir el experimento.' },
+            // --- Vocabulario ---
             { front: '¿Qué son los glucocorticoides?', back: 'Hormonas de la corteza suprarrenal relacionadas con la respuesta al estrés (suben en situaciones de tensión).' },
           ],
         },
