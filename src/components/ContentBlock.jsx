@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { rich } from '../lib/richText.jsx'
+import Flashcards from './Flashcards.jsx'
 
 // Renderiza un bloque de contenido según su `type`.
 // Los tipos están documentados en src/data/units/unidad0.js.
@@ -111,6 +112,9 @@ export default function ContentBlock({ block }) {
 
     case 'activity':
       return <Activity block={block} />
+
+    case 'flashcards':
+      return <Flashcards block={block} />
 
     default:
       return null

@@ -435,6 +435,47 @@ a:hover { text-decoration: underline; }
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* ---------- Flashcards de vitaminas ---------- */
+.flashcards { margin: 20px 0; }
+.fc-decks { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.fc-deck-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--white); border: 1.5px solid var(--line); border-radius: 999px;
+  padding: 7px 14px; font-size: 13.5px; font-weight: 600; color: var(--navy);
+  cursor: pointer; transition: all 0.12s;
+}
+.fc-deck-btn:hover { border-color: var(--blue); color: var(--blue); }
+.fc-deck-btn.active { background: var(--navy); color: #fff; border-color: var(--navy); }
+.fc-deck-count { background: var(--blue-100); color: var(--navy); border-radius: 999px; padding: 0 7px; font-size: 11px; font-weight: 700; }
+.fc-deck-btn.active .fc-deck-count { background: rgba(255,255,255,0.25); color: #fff; }
+.fc-card { perspective: 1200px; cursor: pointer; height: 260px; margin-bottom: 16px; }
+.fc-card__inner { position: relative; width: 100%; height: 100%; transition: transform 0.5s; transform-style: preserve-3d; }
+.fc-card.is-flipped .fc-card__inner { transform: rotateY(180deg); }
+.fc-face {
+  position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  border-radius: 14px; padding: 28px 26px; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center; box-shadow: var(--shadow); border: 1px solid var(--line);
+}
+.fc-face--front { background: var(--white); }
+.fc-face--back { background: var(--ok-100); border-color: var(--ok); transform: rotateY(180deg); }
+.fc-tag {
+  position: absolute; top: 14px; left: 16px; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.06em; color: var(--blue);
+  background: var(--blue-100); padding: 3px 10px; border-radius: 999px;
+}
+.fc-tag--answer { color: var(--ok); background: #d6f0e2; }
+.fc-content { font-size: 21px; font-weight: 600; color: var(--navy); line-height: 1.4; }
+.fc-hint { position: absolute; bottom: 14px; font-size: 12px; color: var(--muted); }
+.fc-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.fc-list li { font-size: 17px; color: var(--ink); background: rgba(255,255,255,0.6); border-radius: 8px; padding: 7px 14px; }
+.fc-nav { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.fc-nav button {
+  background: var(--white); border: 1.5px solid var(--line); border-radius: 9px;
+  padding: 9px 18px; font-size: 14px; font-weight: 600; color: var(--navy); cursor: pointer;
+}
+.fc-nav button:hover { border-color: var(--blue); color: var(--blue); }
+.fc-counter { font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; }
+
 /* ---------- Pager entre secciones ---------- */
 .section-pager {
   display: flex;

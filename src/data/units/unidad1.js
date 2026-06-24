@@ -603,6 +603,92 @@ export const unidad1 = {
       ],
     },
 
+    // ------------------------------------------------------------ §8-bis
+    {
+      id: 'flashcards-vitaminas',
+      title: '8b. Flashcards de vitaminas',
+      icon: '🃏',
+      blocks: [
+        {
+          type: 'p',
+          text: 'Tarjetas para memorizar las vitaminas en **las dos direcciones**: de la vitamina a sus datos (fuentes, funciones, carencias) y al revés (de una carencia, función o fuente, decir qué vitamina es). Elige una baraja, lee la pregunta, piensa la respuesta y **pulsa la tarjeta para voltearla**. Usa «Todas» para que te salgan mezcladas.',
+        },
+        {
+          type: 'flashcards',
+          // Datos de las dos tablas de vitaminas del libro.
+          // Cada función/fuente/carencia se separa en elementos para poder
+          // generar las barajas inversas (de un dato → qué vitaminas).
+          data: [
+            {
+              vit: 'A',
+              fuentes: ['Hortalizas verdes', 'Hígado', 'Huevos'],
+              funciones: ['Ciclo visual', 'Crecimiento', 'Protección y mantenimiento del tejido epitelial'],
+              carencias: ['Ceguera nocturna', 'Desecación epitelial', 'Detención del crecimiento'],
+            },
+            {
+              vit: 'D',
+              fuentes: ['Verduras', 'Aceites animales', 'Mantequilla', 'Hígado', 'Huevos'],
+              funciones: ['Formación de huesos y dientes', 'Funcionamiento de músculos'],
+              carencias: ['Raquitismo (en niños)', 'Deformaciones óseas (en adultos)'],
+            },
+            {
+              vit: 'E',
+              fuentes: ['Aceites vegetales', 'Huevos', 'Mantequilla'],
+              funciones: ['Evita la esterilidad', 'Refuerza las paredes de los capilares'],
+              carencias: ['Esterilidad', 'Abortos', 'Envejecimiento celular'],
+            },
+            {
+              vit: 'K',
+              fuentes: ['Verduras'],
+              funciones: ['Coagulación sanguínea'],
+              carencias: ['Hemorragias subcutáneas e intramusculares'],
+            },
+            {
+              vit: 'C',
+              fuentes: ['Leche', 'Frutas (cítricos)', 'Hortalizas'],
+              funciones: ['Síntesis de colágeno', 'Mantenimiento de las mucosas'],
+              carencias: ['Escorbuto (encías sangrantes, infecciones cutáneas, trastornos digestivos)'],
+            },
+            {
+              vit: 'B1',
+              fuentes: ['Envolturas de cereales y legumbres', 'Bacterias y levaduras'],
+              funciones: ['Metabolismo de glúcidos y lípidos en músculos y neuronas'],
+              carencias: ['Beri-beri (degeneración nerviosa, parálisis)'],
+            },
+            {
+              vit: 'B2',
+              fuentes: ['Hígado', 'Queso', 'Leche', 'Huevos', 'Vegetales de hoja verde'],
+              funciones: ['Cadena de transporte de electrones'],
+              carencias: ['Detención del crecimiento', 'Cansancio', 'Dermatitis', 'Labios resquebrajados'],
+            },
+            {
+              vit: 'B3',
+              fuentes: ['Hongos', 'Levaduras', 'Leche', 'Carnes'],
+              funciones: ['Cadena de transporte de electrones'],
+              carencias: ['Pelagra (vómitos, diarreas, piel áspera)', 'Trastornos nerviosos'],
+            },
+            {
+              vit: 'B8',
+              fuentes: ['Bacterias intestinales', 'Chocolate', 'Yema de huevo'],
+              funciones: ['Desarrollo de glándulas sexuales, sudoríparas y sebáceas'],
+              carencias: ['Dermatitis', 'Caída del pelo', 'Anemia'],
+            },
+            {
+              vit: 'B12',
+              fuentes: ['Bacterias intestinales'],
+              funciones: ['Síntesis de proteínas y nucleótidos', 'Formación de glóbulos rojos'],
+              carencias: ['Anemia (disminución de glóbulos rojos)', 'Trastornos neurológicos'],
+            },
+          ],
+        },
+        {
+          type: 'warning',
+          title: 'Ojo: hay datos que se repiten en varias vitaminas',
+          text: 'Algunas funciones, carencias o fuentes son compartidas. Por ejemplo, "cadena de transporte de electrones" la hacen la B2 y la B3; la "anemia" aparece en la B8 y la B12; el "hígado" es fuente de A, D, B2... Por eso, en las barajas inversas (dato → vitamina) la respuesta a veces incluye más de una vitamina.',
+        },
+      ],
+    },
+
     // ---------------------------------------------------------------- §9
     {
       id: 'actividades',
