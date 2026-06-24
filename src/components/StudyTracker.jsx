@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import {
-  getPlanEntry, markStudied, recordReview, removeFromPlan,
+  getPlanEntry, markStudied, removeFromPlan,
   dueLabel, todayEpochDay,
 } from '../lib/reviewPlan.js'
 
@@ -11,7 +12,6 @@ import {
 //   el siguiente intervalo.
 export default function StudyTracker({ unitId }) {
   const [entry, setEntry] = useState(() => getPlanEntry(unitId))
-  const [reviewing, setReviewing] = useState(false)
   const today = todayEpochDay()
 
   useEffect(() => {
@@ -21,11 +21,6 @@ export default function StudyTracker({ unitId }) {
   }, [unitId])
 
   const study = () => { markStudied(unitId); setEntry(getPlanEntry(unitId)) }
-  const review = (outcome) => {
-    recordReview(unitId, outcome)
-    setEntry(getPlanEntry(unitId))
-    setReviewing(false)
-  }
   const stop = () => { removeFromPlan(unitId); setEntry(null) }
 
   if (!entry) {
@@ -48,19 +43,10 @@ export default function StudyTracker({ unitId }) {
         </div>
       </div>
 
-      {due && !reviewing && (
-        <button className="btn btn--study" onClick={() => setReviewing(true)}>
+      {due && (
+        <Link to={`/unidad/${unitId}/repaso`} className="btn btn--study">
           🔁 Repasar ahora
-        </button>
-      )}
-
-      {reviewing && (
-        <div className="tracker__outcomes">
-          <p className="tracker__q">¿Cómo te ha ido el repaso?</p>
-          <button className="tracker__out tracker__out--mal" onClick={() => review('mal')}>Mal</button>
-          <button className="tracker__out tracker__out--normal" onClick={() => review('normal')}>Regular</button>
-          <button className="tracker__out tracker__out--bien" onClick={() => review('bien')}>Bien</button>
-        </div>
+        </Link>
       )}
 
       <button className="tracker__stop" onClick={stop}>Quitar del plan</button>

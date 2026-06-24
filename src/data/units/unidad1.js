@@ -11,6 +11,40 @@ export const unidad1 = {
   subtitle: 'Bioelementos, agua, sales minerales, glúcidos, lípidos y vitaminas',
   available: true,
 
+  // Repaso exprés: resumen condensado a medida + IDs del mini-test.
+  review: {
+    summary: [
+      {
+        title: 'Bioelementos y biomoléculas',
+        points: [
+          '**Bioelementos primarios:** C, H, O, N, P, S (≈97 % de la materia viva). Se clasifican por **abundancia**.',
+          'Los **oligoelementos** se necesitan en cantidad mínima pero son imprescindibles.',
+          'El **carbono** hace 4 enlaces → forma el esqueleto de las moléculas orgánicas.',
+          'Biomoléculas **inorgánicas** (agua, sales, gases): no exclusivas, sin esqueleto de C. **Orgánicas** (glúcidos, lípidos, proteínas, nucleótidos): exclusivas, con C.',
+        ],
+      },
+      {
+        title: 'Agua, gases y sales',
+        points: [
+          'El agua es **polar (dipolo)** → de ahí salen los puentes de hidrógeno y todas sus propiedades.',
+          'Propiedades: disolvente, alto calor específico (termorregulación), adhesión (capilaridad), cohesión.',
+          'O₂ y CO₂ son **apolares** → por eso son gases.',
+          '**Ósmosis:** el agua pasa por una membrana semipermeable hacia el medio más concentrado. Hipertónico = más sal; hipotónico = menos sal.',
+        ],
+      },
+      {
+        title: 'Glúcidos, lípidos y vitaminas',
+        points: [
+          'Glúcidos: **mono** (glucosa, solubles) → **di** (sacarosa, enlace O-glucosídico) → **poli** (almidón=reserva vegetal, glucógeno=reserva animal, celulosa=estructural; NO solubles por su tamaño).',
+          'Lípidos: insolubles en agua. **Saponificables** (con ácidos grasos: triglicéridos, fosfolípidos) e **insaponificables** (esteroides, terpenos).',
+          'Los **fosfolípidos** son anfipáticos → forman la bicapa de las membranas.',
+          'Vitaminas: **liposolubles** (A, D, E, K) e **hidrosolubles** (C y grupo B). El escorbuto = falta de vitamina C.',
+        ],
+      },
+    ],
+    questions: ['u1-q1', 'u1-q4', 'u1-q5', 'u1-q6', 'u1-q9', 'u1-q11', 'u1-q15', 'u1-q16', 'u1-q19', 'u1-q21'],
+  },
+
   sections: [
     // ---------------------------------------------------------------- §1
     {
@@ -685,6 +719,43 @@ export const unidad1 = {
           type: 'warning',
           title: 'Ojo: hay datos que se repiten en varias vitaminas',
           text: 'Algunas funciones, carencias o fuentes son compartidas. Por ejemplo, "cadena de transporte de electrones" la hacen la B2 y la B3; la "anemia" aparece en la B8 y la B12; el "hígado" es fuente de A, D, B2... Por eso, en las barajas inversas (dato → vitamina) la respuesta a veces incluye más de una vitamina.',
+        },
+      ],
+    },
+
+    // ------------------------------------------------------------ §8-ter
+    {
+      id: 'flashcards-unidad',
+      title: '8c. Flashcards de la unidad',
+      icon: '🃏',
+      blocks: [
+        {
+          type: 'p',
+          text: 'Tarjetas de los conceptos clave de toda la unidad (además de las de vitaminas). Lee la pregunta, **pulsa para voltear** y califícate (No / Medio / Me lo sé). Las que falles vuelven a salir hasta que las domines.',
+        },
+        {
+          type: 'flashcards',
+          deckLabel: 'Conceptos U1',
+          cards: [
+            { front: '¿Cuáles son los 6 bioelementos primarios?', back: 'C, H, O, N, P, S (carbono, hidrógeno, oxígeno, nitrógeno, fósforo, azufre).' },
+            { front: '¿Cuál es el criterio para clasificar los bioelementos?', back: 'Su abundancia en la materia viva (primarios, secundarios, oligoelementos).' },
+            { front: '¿Por qué el carbono forma el esqueleto de las moléculas orgánicas?', back: 'Porque hace 4 enlaces covalentes y puede formar cadenas largas, lineales o ramificadas.' },
+            { front: '¿Qué diferencia una biomolécula orgánica de una inorgánica?', back: 'Las orgánicas son exclusivas de los seres vivos y tienen esqueleto de carbono; las inorgánicas no.' },
+            { front: '¿Por qué el agua es una molécula polar?', back: 'El oxígeno es más electronegativo: atrae los electrones, quedando con carga δ- y los hidrógenos δ+. Es un dipolo.' },
+            { front: '¿Qué son los puentes de hidrógeno?', back: 'Atracciones entre el oxígeno (δ-) de una molécula de agua y los hidrógenos (δ+) de otras. Débiles, pero millones.' },
+            { front: '¿Por qué el agua tiene un alto calor específico?', back: 'Porque hay que romper muchísimos puentes de hidrógeno para calentarla, así que absorbe mucho calor (termorregula).' },
+            { front: '¿Por qué el O₂ y el CO₂ son gases?', back: 'Porque son moléculas apolares: apenas se atraen entre sí y se separan.' },
+            { front: '¿Qué es la ósmosis?', back: 'El paso de agua (disolvente) por una membrana semipermeable hacia el medio más concentrado, hasta equilibrar.' },
+            { front: '¿Qué es un medio hipertónico y uno hipotónico?', back: 'Hipertónico = más solutos (más sal). Hipotónico = menos solutos. El agua va hacia el hipertónico.' },
+            { front: '¿Por qué los monosacáridos se disuelven y los polisacáridos no?', back: 'Los polisacáridos son polares, pero su enorme tamaño les impide disolverse.' },
+            { front: '¿Cómo se llama el enlace entre dos monosacáridos?', back: 'Enlace O-glucosídico (se libera una molécula de agua al formarlo).' },
+            { front: 'Reserva energética: ¿almidón o glucógeno?', back: 'Almidón = reserva en plantas. Glucógeno = reserva en animales (hígado y músculo).' },
+            { front: '¿Qué es un lípido saponificable?', back: 'Uno que contiene ácidos grasos y puede hacer jabón (triglicéridos, fosfolípidos). Los insaponificables no (esteroides).' },
+            { front: '¿Por qué los fosfolípidos forman la bicapa de las membranas?', back: 'Porque son anfipáticos: cabeza polar (al agua) y colas apolares (juntas, lejos del agua).' },
+            { front: '¿Qué función tiene el colesterol en las membranas?', back: 'Mantener su fluidez frente a los cambios de temperatura (función estructural).' },
+            { front: '¿Cuáles son las vitaminas liposolubles?', back: 'A, D, E y K (se disuelven en grasas). Las demás (C y grupo B) son hidrosolubles.' },
+            { front: '¿Qué carencia produce la falta de vitamina C?', back: 'El escorbuto (encías sangrantes, infecciones cutáneas, trastornos digestivos).' },
+          ],
         },
       ],
     },

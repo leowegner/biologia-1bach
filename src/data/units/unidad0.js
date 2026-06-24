@@ -32,6 +32,42 @@ export const unidad0 = {
   subtitle: 'El método científico, las variables y cómo se construye el conocimiento',
   available: true,
 
+  // Repaso exprés: resumen condensado a medida + IDs de las preguntas del
+  // examen que forman el mini-test de recuperación.
+  review: {
+    summary: [
+      {
+        title: 'El método científico',
+        points: [
+          'Su objetivo es **minimizar la subjetividad** del científico.',
+          'Fases en orden: **observación → pregunta → hipótesis → experimentación → análisis → conclusión → comunicación**.',
+          'Una **hipótesis** se formula ANTES (suposición comprobable y *falsable*); una **conclusión** se obtiene DESPUÉS, con los datos.',
+          'En ciencias empíricas **nada queda "probado"** de forma absoluta; refutar una hipótesis también es un resultado útil.',
+        ],
+      },
+      {
+        title: 'Las variables',
+        points: [
+          '**Independiente** = la que el investigador cambia (la causa).',
+          '**Dependiente** = la que se mide (el efecto).',
+          '**Controladas** = se mantienen constantes para aislar la causa.',
+          'En los jabalíes: independiente = el combate; dependiente = los glucocorticoides; controladas = tamaño, especie, territorio.',
+        ],
+      },
+      {
+        title: 'Técnicas y razonamiento',
+        points: [
+          '**Grupo de control:** igual al experimental pero sin tratamiento, para comparar.',
+          '**Doble ciego:** ni el sujeto ni el investigador saben quién recibe el tratamiento (evita sesgos).',
+          '**Inducción:** de lo particular a lo general (probable). **Deducción:** de lo general a lo particular (segura).',
+          'Estructura de un trabajo: Introducción → Material y métodos → Resultados → Discusión → Conclusiones → Bibliografía.',
+        ],
+      },
+    ],
+    // Mini-test: subconjunto representativo del examen (se mezcla al hacerlo).
+    questions: ['u0-q1', 'u0-q2', 'u0-q3', 'u0-q5', 'u0-q7', 'u0-q8', 'u0-q10', 'u0-q17'],
+  },
+
   sections: [
     // ---------------------------------------------------------------- §1
     {
@@ -373,6 +409,40 @@ export const unidad0 = {
             ['**Grupo de control**', 'Grupo idéntico al experimental pero que no recibe el tratamiento, usado como referencia para comparar.'],
             ['**Placebo**', 'Sustancia sin efecto real (sin principio activo) que se da al grupo de control para detectar el efecto psicológico de "creer" que se recibe tratamiento.'],
             ['**Reproducibilidad**', 'Propiedad de un resultado científico de poder obtenerse de nuevo si otros repiten el experimento. Es lo que hace fiable a la ciencia.'],
+          ],
+        },
+      ],
+    },
+
+    // ------------------------------------------------------------ §7-bis
+    {
+      id: 'flashcards-unidad',
+      title: '7b. Flashcards de la unidad',
+      icon: '🃏',
+      blocks: [
+        {
+          type: 'p',
+          text: 'Tarjetas de los conceptos clave de toda la unidad. Lee la pregunta, piensa la respuesta, **pulsa para voltear** y califícate (No / Medio / Me lo sé). Las que falles volverán a salir hasta que las domines.',
+        },
+        {
+          type: 'flashcards',
+          deckLabel: 'Conceptos U0',
+          cards: [
+            { front: '¿Cuál es el objetivo principal del método científico?', back: 'Minimizar la subjetividad del científico, para que el resultado no dependa de quién lo haga.' },
+            { front: '¿Cuáles son las fases del método científico, en orden?', back: 'Observación → Pregunta → Hipótesis → Experimentación → Análisis de resultados → Conclusión → Comunicación.' },
+            { front: '¿Qué es una hipótesis?', back: 'Una suposición provisional y comprobable (falsable) que se formula ANTES del experimento.' },
+            { front: '¿En qué se diferencia una hipótesis de una conclusión?', back: 'La hipótesis es previa (suposición); la conclusión es posterior, a la vista de los datos.' },
+            { front: '¿Qué significa que una hipótesis sea "falsable"?', back: 'Que se puede demostrar falsa: un experimento podría contradecirla. Si no, no es científica.' },
+            { front: '¿Qué es la variable independiente?', back: 'La que el investigador cambia o manipula (la causa).' },
+            { front: '¿Qué es la variable dependiente?', back: 'La que se mide para ver el efecto (depende de la independiente).' },
+            { front: '¿Qué son las variables controladas?', back: 'Las que se mantienen constantes para aislar la causa y que no influyan en el resultado.' },
+            { front: '¿Qué es un grupo de control?', back: 'Un grupo idéntico al experimental pero que NO recibe el tratamiento, usado para comparar.' },
+            { front: '¿Qué es un experimento de doble ciego?', back: 'Aquel en que ni el participante ni el investigador saben quién recibe el tratamiento real, para evitar sesgos.' },
+            { front: '¿Qué es la inducción?', back: 'Razonamiento de lo particular a lo general (a partir de casos, una regla general). No es 100% segura.' },
+            { front: '¿Qué es la deducción?', back: 'Razonamiento de lo general a lo particular (de una ley, una conclusión sobre un caso). Es segura.' },
+            { front: '¿Cuál es la estructura de un trabajo científico?', back: 'Introducción → Material y métodos → Resultados → Discusión → Conclusiones → Bibliografía.' },
+            { front: 'En un trabajo científico, ¿qué va en "Resultados" y qué en "Discusión"?', back: 'Resultados: solo los datos observados. Discusión: la interpretación de qué significan.' },
+            { front: '¿Qué son los glucocorticoides?', back: 'Hormonas de la corteza suprarrenal relacionadas con la respuesta al estrés (suben en situaciones de tensión).' },
           ],
         },
       ],

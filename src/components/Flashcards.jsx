@@ -12,6 +12,21 @@ import { initSession, currentCard, rate, isDone, progress } from '../lib/flashca
 // hasta que dominas todas.
 // ============================================================================
 
+// Construye las barajas. Dos modos:
+//   - block.cards: un mazo simple [{front, back:[...]}] → una sola baraja.
+//   - block.data: lista de vitaminas → 7 barajas (Todas + 6 tipos).
+function buildDecksFromBlock(block) {
+  if (block.cards) {
+    // Mazo simple: las respuestas pueden ser texto o array; normalizamos a array.
+    const cards = block.cards.map((c) => ({
+      front: c.front,
+      back: Array.isArray(c.back) ? c.back : [c.back],
+    }))
+    return [{ id: 'unit', label: block.deckLabel || 'Conceptos', cards }]
+  }
+  return buildDecks(block.data)
+}
+
 function buildDecks(vitaminas) {
   const directDeck = (key, frontLabel) =>
     vitaminas
@@ -61,7 +76,7 @@ function shuffledOrder(n, seed) {
 }
 
 export default function Flashcards({ block }) {
-  const decks = useMemo(() => buildDecks(block.data), [block.data])
+  const decks = useMemo(() => buildDecksFromBlock(block), [block])
   const [deckIdx, setDeckIdx] = useState(0)
   const [seed, setSeed] = useState(1)
   const [flipped, setFlipped] = useState(false)
@@ -101,18 +116,20 @@ export default function Flashcards({ block }) {
 
   return (
     <div className="flashcards no-print">
-      <div className="fc-decks">
-        {decks.map((d, i) => (
-          <button
-            key={d.id}
-            className={`fc-deck-btn ${i === deckIdx ? 'active' : ''}`}
-            onClick={() => pickDeck(i)}
-          >
-            {d.label}
-            <span className="fc-deck-count">{d.cards.length}</span>
-          </button>
-        ))}
-      </div>
+      {decks.length > 1 && (
+        <div className="fc-decks">
+          {decks.map((d, i) => (
+            <button
+              key={d.id}
+              className={`fc-deck-btn ${i === deckIdx ? 'active' : ''}`}
+              onClick={() => pickDeck(i)}
+            >
+              {d.label}
+              <span className="fc-deck-count">{d.cards.length}</span>
+            </button>
+          ))}
+        </div>
+      )}
 
       <div className="fc-bar">
         <div className="fc-progress">

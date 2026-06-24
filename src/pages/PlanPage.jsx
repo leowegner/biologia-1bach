@@ -58,7 +58,11 @@ export default function PlanPage() {
                   <span className={`plan-item__due ${overdue || dueToday ? 'is-due' : ''}`}>
                     {dueLabel(e, today)}
                   </span>
-                  <Link to={`/unidad/${e.unitId}`} className="plan-item__go">Ir →</Link>
+                  {(overdue || dueToday) ? (
+                    <Link to={`/unidad/${e.unitId}/repaso`} className="plan-item__review">🔁 Repasar</Link>
+                  ) : (
+                    <Link to={`/unidad/${e.unitId}`} className="plan-item__go">Ir →</Link>
+                  )}
                 </div>
               </li>
             )
