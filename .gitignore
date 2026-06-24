@@ -8,3 +8,4 @@ dist
 
 # Scripts de verificación temporales
 verify*.mjs
+.claude/

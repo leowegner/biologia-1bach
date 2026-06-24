@@ -468,13 +468,45 @@ a:hover { text-decoration: underline; }
 .fc-hint { position: absolute; bottom: 14px; font-size: 12px; color: var(--muted); }
 .fc-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
 .fc-list li { font-size: 17px; color: var(--ink); background: rgba(255,255,255,0.6); border-radius: 8px; padding: 7px 14px; }
-.fc-nav { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.fc-nav button {
-  background: var(--white); border: 1.5px solid var(--line); border-radius: 9px;
-  padding: 9px 18px; font-size: 14px; font-weight: 600; color: var(--navy); cursor: pointer;
+/* Barra de progreso + barajar */
+.fc-bar { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.fc-progress { position: relative; flex: 1; height: 26px; background: var(--blue-100); border-radius: 999px; overflow: hidden; }
+.fc-progress__fill { position: absolute; inset: 0 auto 0 0; height: 100%; background: linear-gradient(90deg, var(--blue), var(--ok)); border-radius: 999px; transition: width 0.4s ease; }
+.fc-progress__label { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 12.5px; font-weight: 700; color: var(--navy); }
+.fc-shuffle { background: var(--navy); color: #fff; border: none; border-radius: 9px; padding: 9px 16px; font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+.fc-shuffle:hover { background: var(--navy-700); }
+
+/* Cartas fantasma apiladas detrás (efecto 3D) */
+.fc-stack { position: absolute; inset: 0; border-radius: 14px; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow); transition: transform 0.4s ease; }
+.fc-stack--1 { transform: translate(6px, 6px) rotate(1.5deg); z-index: -1; }
+.fc-stack--2 { transform: translate(11px, 11px) rotate(3deg); z-index: -2; }
+.fc-card.is-shuffling .fc-card__inner { animation: fc-shuffle 0.65s ease; }
+.fc-card.is-shuffling .fc-stack--1 { animation: fc-shuffle1 0.65s ease; }
+.fc-card.is-shuffling .fc-stack--2 { animation: fc-shuffle2 0.65s ease; }
+@keyframes fc-shuffle {
+  0% { transform: translateX(0) rotate(0); }
+  30% { transform: translateX(-40px) rotate(-6deg); }
+  60% { transform: translateX(30px) rotate(4deg); }
+  100% { transform: translateX(0) rotate(0); }
 }
-.fc-nav button:hover { border-color: var(--blue); color: var(--blue); }
-.fc-counter { font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; }
+@keyframes fc-shuffle1 { 0%,100% { transform: translate(6px,6px) rotate(1.5deg); } 40% { transform: translate(44px,-8px) rotate(8deg); } }
+@keyframes fc-shuffle2 { 0%,100% { transform: translate(11px,11px) rotate(3deg); } 50% { transform: translate(-38px,10px) rotate(-7deg); } }
+
+/* Botones de calificación */
+.fc-rate { display: flex; gap: 10px; }
+.fc-rate-btn { flex: 1; border: none; border-radius: 11px; padding: 14px 10px; font-size: 15px; font-weight: 700; cursor: pointer; color: #fff; transition: transform 0.05s, filter 0.12s; }
+.fc-rate-btn:hover { filter: brightness(1.08); }
+.fc-rate-btn:active { transform: translateY(1px); }
+.fc-rate-btn--no { background: var(--bad); }
+.fc-rate-btn--medio { background: var(--warn); }
+.fc-rate-btn--se { background: var(--ok); }
+.fc-rate-hint { text-align: center; color: var(--muted); font-size: 14px; margin: 4px 0 0; }
+
+/* Pantalla de baraja completada */
+.fc-done { text-align: center; padding: 36px 20px; background: var(--ok-100); border: 1px solid var(--ok); border-radius: 14px; }
+.fc-done__ico { font-size: 52px; margin-bottom: 8px; }
+.fc-done h3 { margin: 0 0 6px; color: var(--navy); font-size: 22px; }
+.fc-done p { margin: 0 0 18px; color: var(--muted); }
 
 /* ---------- Pager entre secciones ---------- */
 .section-pager {
@@ -787,6 +819,79 @@ a:hover { text-decoration: underline; }
     color: #333;
   }
 }
+
+/* ---------- StudyTracker (en la barra lateral de la unidad) ---------- */
+.tracker { margin-top: 12px; padding-top: 14px; border-top: 1px dashed var(--line); }
+.btn--study { background: var(--ok); width: 100%; }
+.btn--study:hover { background: #19744a; }
+.tracker__hint { font-size: 12px; color: var(--muted); margin: 8px 0 0; text-align: center; }
+.tracker__status { display: flex; align-items: center; gap: 9px; font-size: 13.5px; margin-bottom: 10px; }
+.tracker__ico { font-size: 18px; }
+.tracker--due .tracker__status { color: var(--warn); }
+.tracker__outcomes { margin-top: 8px; }
+.tracker__q { font-size: 13px; font-weight: 600; margin: 0 0 6px; }
+.tracker__out { width: 100%; border: none; border-radius: 7px; padding: 8px; margin-bottom: 5px; font-size: 13.5px; font-weight: 600; color: #fff; cursor: pointer; }
+.tracker__out--mal { background: var(--bad); }
+.tracker__out--normal { background: var(--warn); }
+.tracker__out--bien { background: var(--ok); }
+.tracker__stop { background: none; border: none; color: var(--muted); font-size: 12px; cursor: pointer; margin-top: 8px; text-decoration: underline; padding: 0; }
+.tracker__stop:hover { color: var(--bad); }
+
+/* ---------- Panel "Hoy toca repasar" (home) ---------- */
+.today-review {
+  background: linear-gradient(135deg, #fff6e6, #fff);
+  border: 1px solid #f0d9a8; border-left: 5px solid var(--warn);
+  border-radius: var(--radius); padding: 20px 24px; margin-bottom: 32px; box-shadow: var(--shadow);
+}
+.today-review__head { display: flex; align-items: center; gap: 10px; }
+.today-review__ico { font-size: 22px; }
+.today-review__head h2 { margin: 0; color: var(--navy); font-size: 20px; }
+.today-review__sub { color: var(--muted); margin: 6px 0 14px; }
+.today-review__chips { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; }
+.today-chip {
+  display: flex; flex-direction: column; background: #fff; border: 1.5px solid var(--warn);
+  border-radius: 10px; padding: 8px 16px; color: var(--navy); text-decoration: none; transition: transform 0.1s;
+}
+.today-chip:hover { transform: translateY(-2px); text-decoration: none; }
+.today-chip strong { font-size: 13px; color: var(--warn); }
+.today-chip span { font-size: 14px; }
+.today-review__all { font-weight: 600; font-size: 14px; }
+
+/* ---------- Página Plan de repaso ---------- */
+.plan-head h1 { color: var(--navy); margin: 0 0 8px; }
+.plan-head p { color: var(--muted); max-width: 680px; }
+.plan-list { list-style: none; margin: 24px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.plan-item {
+  display: flex; align-items: center; justify-content: space-between; gap: 14px;
+  background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--line);
+  border-radius: var(--radius); padding: 16px 20px; box-shadow: var(--shadow);
+}
+.plan-item--today { border-left-color: var(--warn); background: #fffdf7; }
+.plan-item--overdue { border-left-color: var(--bad); background: #fffbfb; }
+.plan-item__main { display: flex; align-items: center; gap: 14px; }
+.plan-item__num {
+  width: 44px; height: 44px; flex-shrink: 0; background: var(--navy); color: #fff;
+  border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 16px;
+}
+.plan-item__info { display: flex; flex-direction: column; }
+.plan-item__info strong { color: var(--navy); font-size: 16px; }
+.plan-item__meta { font-size: 12.5px; color: var(--muted); }
+.plan-item__right { display: flex; align-items: center; gap: 16px; }
+.plan-item__due { font-size: 14px; font-weight: 600; color: var(--muted); white-space: nowrap; }
+.plan-item__due.is-due { color: var(--bad); }
+.plan-item__go { font-weight: 600; font-size: 14px; white-space: nowrap; }
+.plan-empty { text-align: center; padding: 50px 20px; }
+.plan-empty__ico { font-size: 56px; margin-bottom: 10px; }
+.plan-empty h2 { color: var(--navy); margin: 0 0 8px; }
+.plan-empty p { color: var(--muted); max-width: 440px; margin: 0 auto 22px; }
+.plan-notyet { margin-top: 36px; padding-top: 22px; border-top: 1px solid var(--line); }
+.plan-notyet h3 { color: var(--navy); font-size: 16px; margin: 0 0 12px; }
+.plan-notyet__chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.plan-notyet__chip {
+  background: var(--white); border: 1.5px solid var(--line); border-radius: 999px;
+  padding: 6px 14px; font-size: 13px; color: var(--navy); text-decoration: none;
+}
+.plan-notyet__chip:hover { border-color: var(--blue); color: var(--blue); text-decoration: none; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 860px) {

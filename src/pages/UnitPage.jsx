@@ -2,6 +2,7 @@ import { useParams, Link, Navigate } from 'react-router-dom'
 import { useState } from 'react'
 import { getUnit } from '../data/units/index.js'
 import ContentBlock from '../components/ContentBlock.jsx'
+import StudyTracker from '../components/StudyTracker.jsx'
 
 export default function UnitPage() {
   const { unitId } = useParams()
@@ -43,6 +44,7 @@ export default function UnitPage() {
         <Link to={`/unidad/${unit.id}/examen`} className="btn btn--exam">
           📝 Examen final
         </Link>
+        <StudyTracker unitId={unit.id} />
       </aside>
 
       {/* Contenido de la sección activa */}

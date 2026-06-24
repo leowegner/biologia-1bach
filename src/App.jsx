@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage.jsx'
 import UnitPage from './pages/UnitPage.jsx'
 import ExamPage from './pages/ExamPage.jsx'
 import ReviewPage from './pages/ReviewPage.jsx'
+import PlanPage from './pages/PlanPage.jsx'
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
         <Route path="/unidad/:unitId" element={<UnitPage />} />
         <Route path="/unidad/:unitId/examen" element={<ExamPage />} />
         <Route path="/repaso" element={<ReviewPage />} />
+        <Route path="/plan" element={<PlanPage />} />
         {/* Cualquier ruta desconocida vuelve al índice */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

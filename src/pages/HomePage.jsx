@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { units } from '../data/units/index.js'
+import TodayReview from '../components/TodayReview.jsx'
 
 export default function HomePage() {
   return (
@@ -11,6 +12,8 @@ export default function HomePage() {
           conceptos clave y exámenes con repaso de tus fallos.
         </p>
       </section>
+
+      <TodayReview />
 
       <div className="units-grid">
         {units.map((unit) => {
