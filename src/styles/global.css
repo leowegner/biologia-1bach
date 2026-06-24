@@ -860,26 +860,38 @@ a:hover { text-decoration: underline; }
 /* ---------- Página Plan de repaso ---------- */
 .plan-head h1 { color: var(--navy); margin: 0 0 8px; }
 .plan-head p { color: var(--muted); max-width: 680px; }
-.plan-list { list-style: none; margin: 24px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
-.plan-item {
-  display: flex; align-items: center; justify-content: space-between; gap: 14px;
-  background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--line);
-  border-radius: var(--radius); padding: 16px 20px; box-shadow: var(--shadow);
+/* Tarjetas grandes del plan */
+.plan-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; margin-top: 24px; }
+.plan-card {
+  background: #fff; border: 1px solid var(--line); border-top: 5px solid var(--ok);
+  border-radius: var(--radius); padding: 20px 22px; box-shadow: var(--shadow);
+  display: flex; flex-direction: column;
 }
-.plan-item--today { border-left-color: var(--warn); background: #fffdf7; }
-.plan-item--overdue { border-left-color: var(--bad); background: #fffbfb; }
-.plan-item__main { display: flex; align-items: center; gap: 14px; }
-.plan-item__num {
-  width: 44px; height: 44px; flex-shrink: 0; background: var(--navy); color: #fff;
-  border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 16px;
+.plan-card--today { border-top-color: var(--warn); }
+.plan-card--overdue { border-top-color: var(--bad); }
+.plan-card__head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.plan-card__num {
+  width: 46px; height: 46px; background: var(--navy); color: #fff; border-radius: 11px;
+  display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 17px;
 }
-.plan-item__info { display: flex; flex-direction: column; }
-.plan-item__info strong { color: var(--navy); font-size: 16px; }
-.plan-item__meta { font-size: 12.5px; color: var(--muted); }
-.plan-item__right { display: flex; align-items: center; gap: 16px; }
-.plan-item__due { font-size: 14px; font-weight: 600; color: var(--muted); white-space: nowrap; }
-.plan-item__due.is-due { color: var(--bad); }
-.plan-item__go { font-weight: 600; font-size: 14px; white-space: nowrap; }
+.plan-card__badge { font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 999px; }
+.plan-card__badge--ok { background: var(--ok-100); color: var(--ok); }
+.plan-card__badge--today { background: var(--warn-100); color: var(--warn); }
+.plan-card__badge--overdue { background: var(--bad-100); color: var(--bad); }
+.plan-card__title { color: var(--navy); font-size: 18px; margin: 0 0 16px; }
+.plan-card__due { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.plan-card__due-ico { font-size: 24px; }
+.plan-card__due-label { display: block; font-size: 12px; color: var(--muted); }
+.plan-card__due strong { font-size: 18px; color: var(--navy); }
+.plan-card__due strong.is-due { color: var(--bad); }
+.plan-card__cycle { margin-bottom: 18px; }
+.plan-card__cycle-bar { height: 8px; background: var(--blue-100); border-radius: 999px; overflow: hidden; margin-bottom: 6px; }
+.plan-card__cycle-fill { height: 100%; background: linear-gradient(90deg, var(--blue), var(--ok)); border-radius: 999px; transition: width 0.4s; }
+.plan-card__cycle-label { font-size: 12px; color: var(--muted); }
+.plan-card__actions { display: flex; align-items: center; gap: 12px; margin-top: auto; }
+.plan-card__review { flex: 1; background: var(--warn); justify-content: center; }
+.plan-card__review:hover { background: #9a6708; }
+.plan-card__go { font-weight: 600; font-size: 14px; color: var(--blue); white-space: nowrap; }
 .plan-empty { text-align: center; padding: 50px 20px; }
 .plan-empty__ico { font-size: 56px; margin-bottom: 10px; }
 .plan-empty h2 { color: var(--navy); margin: 0 0 8px; }

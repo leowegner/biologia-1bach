@@ -39,35 +39,51 @@ export default function PlanPage() {
           <Link to="/" className="btn">Ver unidades</Link>
         </div>
       ) : (
-        <ul className="plan-list">
+        <div className="plan-cards">
           {sorted.map((e) => {
             const unit = getUnit(e.unitId)
             if (!unit) return null
             const overdue = e.due < today
             const dueToday = e.due === today
+            const due = overdue || dueToday
+            const state = overdue ? 'overdue' : dueToday ? 'today' : 'ok'
+            const stateLabel = overdue ? '¡Atrasado!' : dueToday ? 'Toca hoy' : 'Al día'
+            // Progreso dentro del ciclo de intervalos (0..1).
+            const cyclePct = Math.round((e.step / (INTERVALS.length - 1)) * 100)
             return (
-              <li key={e.unitId} className={`plan-item ${overdue ? 'plan-item--overdue' : dueToday ? 'plan-item--today' : ''}`}>
-                <div className="plan-item__main">
-                  <span className="plan-item__num">U{e.unitId}</span>
-                  <div className="plan-item__info">
-                    <strong>{unit.title}</strong>
-                    <span className="plan-item__meta">Intervalo actual: {INTERVALS[e.step]} día{INTERVALS[e.step] !== 1 ? 's' : ''}</span>
+              <div key={e.unitId} className={`plan-card plan-card--${state}`}>
+                <div className="plan-card__head">
+                  <span className="plan-card__num">U{e.unitId}</span>
+                  <span className={`plan-card__badge plan-card__badge--${state}`}>{stateLabel}</span>
+                </div>
+                <h3 className="plan-card__title">{unit.title}</h3>
+
+                <div className="plan-card__due">
+                  <span className="plan-card__due-ico">{due ? '🔔' : '✅'}</span>
+                  <div>
+                    <span className="plan-card__due-label">Próximo repaso</span>
+                    <strong className={due ? 'is-due' : ''}>{dueLabel(e, today)}</strong>
                   </div>
                 </div>
-                <div className="plan-item__right">
-                  <span className={`plan-item__due ${overdue || dueToday ? 'is-due' : ''}`}>
-                    {dueLabel(e, today)}
+
+                {/* Barra de progreso del ciclo de repasos */}
+                <div className="plan-card__cycle">
+                  <div className="plan-card__cycle-bar">
+                    <div className="plan-card__cycle-fill" style={{ width: `${cyclePct}%` }} />
+                  </div>
+                  <span className="plan-card__cycle-label">
+                    Intervalo {INTERVALS[e.step]} día{INTERVALS[e.step] !== 1 ? 's' : ''} · paso {e.step + 1}/{INTERVALS.length}
                   </span>
-                  {(overdue || dueToday) ? (
-                    <Link to={`/unidad/${e.unitId}/repaso`} className="plan-item__review">🔁 Repasar</Link>
-                  ) : (
-                    <Link to={`/unidad/${e.unitId}`} className="plan-item__go">Ir →</Link>
-                  )}
                 </div>
-              </li>
+
+                <div className="plan-card__actions">
+                  <Link to={`/unidad/${e.unitId}/repaso`} className="btn plan-card__review">🔁 Repasar</Link>
+                  <Link to={`/unidad/${e.unitId}`} className="plan-card__go">Ver unidad →</Link>
+                </div>
+              </div>
             )
           })}
-        </ul>
+        </div>
       )}
 
       {notInPlan.length > 0 && (
