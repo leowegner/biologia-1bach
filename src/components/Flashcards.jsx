@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react'
+import { useState, useMemo, useEffect, useRef } from 'react'
 import { rich } from '../lib/richText.jsx'
 import { initSession, currentCard, rate, isDone, progress } from '../lib/flashcardQueue.js'
 
@@ -33,17 +33,33 @@ function buildDecks(vitaminas) {
       .filter((v) => v[key] && v[key].length)
       .map((v) => ({ front: `${frontLabel} de la **vitamina ${v.vit}**:`, back: v[key] }))
 
+  // Agrupa por una clave normalizada para que el MISMO dato escrito de forma
+  // ligeramente distinta en dos vitaminas (p. ej. "Anemia" y "Anemia (…)")
+  // cuente como uno solo y junte ambas vitaminas en la respuesta. Mostramos
+  // la etiqueta más corta (la más limpia) como enunciado de la tarjeta.
+  const normalizeKey = (s) =>
+    s
+      .toLowerCase()
+      .replace(/\(.*?\)/g, '') // quita los paréntesis explicativos
+      .replace(/[.,;].*$/, '') // y todo lo que vaya tras una coma/punto/;
+      .normalize('NFD').replace(/\p{Diacritic}/gu, '') // quita acentos
+      .trim()
+
   const inverseDeck = (key, frontLabel) => {
-    const map = new Map()
+    const map = new Map() // claveNormalizada → { label, vits: Set }
     for (const v of vitaminas) {
       for (const item of v[key] || []) {
-        if (!map.has(item)) map.set(item, [])
-        map.get(item).push(v.vit)
+        const k = normalizeKey(item)
+        if (!map.has(k)) map.set(k, { label: item, vits: new Set() })
+        const entry = map.get(k)
+        // Nos quedamos con la etiqueta más corta (sin el paréntesis aclaratorio).
+        if (item.length < entry.label.length) entry.label = item
+        entry.vits.add(v.vit)
       }
     }
-    return [...map.entries()].map(([item, vits]) => ({
-      front: `${frontLabel}: **${item}**. ¿Qué vitamina(s)?`,
-      back: vits.map((x) => `Vitamina ${x}`),
+    return [...map.values()].map(({ label, vits }) => ({
+      front: `${frontLabel}: **${label}**. ¿Qué vitamina(s)?`,
+      back: [...vits].map((x) => `Vitamina ${x}`),
     }))
   }
 
@@ -81,6 +97,10 @@ export default function Flashcards({ block }) {
   const [seed, setSeed] = useState(1)
   const [flipped, setFlipped] = useState(false)
   const [shuffling, setShuffling] = useState(false)
+  const shuffleTimer = useRef(null)
+
+  // Cancela el temporizador de barajado si el componente se desmonta a medias.
+  useEffect(() => () => clearTimeout(shuffleTimer.current), [])
 
   const deck = decks[deckIdx]
   const order = useMemo(() => shuffledOrder(deck.cards.length, seed), [deck.cards.length, seed])
@@ -106,7 +126,7 @@ export default function Flashcards({ block }) {
   const shuffle = () => {
     setShuffling(true)
     setFlipped(false)
-    setTimeout(() => {
+    shuffleTimer.current = setTimeout(() => {
       setSeed((s) => s + 1)
       setShuffling(false)
     }, 650)
