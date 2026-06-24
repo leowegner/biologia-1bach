@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { useState, useMemo } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { getFails, clearFail, clearAllFails } from '../lib/storage.js'
 import { getUnit } from '../data/units/index.js'
 import { isCorrect } from '../lib/grading.js'
@@ -23,6 +23,11 @@ export default function ReviewPage() {
   const [items, setItems] = useState(() => collectFailedQuestions())
   const [answers, setAnswers] = useState({})
   const [checked, setChecked] = useState({})
+  const timers = useRef([])
+
+  // Cancela los temporizadores pendientes (los que retiran una tarjeta acertada)
+  // si se sale de la página antes de que disparen.
+  useEffect(() => () => timers.current.forEach(clearTimeout), [])
 
   const remaining = items.length
 
@@ -34,7 +39,7 @@ export default function ReviewPage() {
     if (ok) {
       // Acertada → fuera de la lista de repaso (en storage y en pantalla, tras un momento).
       clearFail(q.id)
-      setTimeout(() => {
+      const t = setTimeout(() => {
         setItems((list) => list.filter((it) => it.q.id !== q.id))
         setAnswers((a) => {
           const next = { ...a }
@@ -47,6 +52,7 @@ export default function ReviewPage() {
           return next
         })
       }, 1200)
+      timers.current.push(t)
     }
   }
 

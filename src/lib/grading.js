@@ -22,13 +22,3 @@ export function isCorrect(q, value) {
       return false
   }
 }
-
-// Para las preguntas de ordenar, el valor inicial (sin tocar) ya viene
-// "ordenado por defecto". Consideramos que el alumno no ha respondido si:
-//   - mc/tf: el valor es undefined
-//   - order: nunca lo tocó (lo tratamos como respondido siempre, porque
-//     siempre hay un orden visible; si lo deja como está, cuenta como su respuesta)
-export function isAnswered(q, value) {
-  if (q.type === 'order') return true
-  return value !== undefined && value !== null
-}

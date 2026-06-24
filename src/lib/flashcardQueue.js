@@ -18,7 +18,7 @@
 // A qué distancia (en nº de tarjetas por delante) se reinserta cada nivel.
 // "No" reaparece antes que "Medio". Si la cola es más corta que el gap,
 // se reinserta al final (intercalando todo lo que quede).
-export const GAPS = {
+const GAPS = {
   no: 2, // "no me lo sé": vuelve tras ~2 tarjetas
   medio: 5, // "medio": vuelve tras ~5 tarjetas
 }

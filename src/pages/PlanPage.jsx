@@ -49,7 +49,9 @@ export default function PlanPage() {
             const state = overdue ? 'overdue' : dueToday ? 'today' : 'ok'
             const stateLabel = overdue ? '¡Atrasado!' : dueToday ? 'Toca hoy' : 'Al día'
             // Progreso dentro del ciclo de intervalos (0..1).
-            const cyclePct = Math.round((e.step / (INTERVALS.length - 1)) * 100)
+            const cyclePct = INTERVALS.length > 1
+              ? Math.round((e.step / (INTERVALS.length - 1)) * 100)
+              : 100
             return (
               <div key={e.unitId} className={`plan-card plan-card--${state}`}>
                 <div className="plan-card__head">

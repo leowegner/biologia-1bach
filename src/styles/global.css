@@ -828,8 +828,6 @@ a:hover { text-decoration: underline; }
 .tracker__status { display: flex; align-items: center; gap: 9px; font-size: 13.5px; margin-bottom: 10px; }
 .tracker__ico { font-size: 18px; }
 .tracker--due .tracker__status { color: var(--warn); }
-.tracker__outcomes { margin-top: 8px; }
-.tracker__q { font-size: 13px; font-weight: 600; margin: 0 0 6px; }
 .tracker__out { width: 100%; border: none; border-radius: 7px; padding: 8px; margin-bottom: 5px; font-size: 13.5px; font-weight: 600; color: #fff; cursor: pointer; }
 .tracker__out--mal { background: var(--bad); }
 .tracker__out--normal { background: var(--warn); }
@@ -915,11 +913,6 @@ a:hover { text-decoration: underline; }
 .rx-steps span.active { background: var(--navy); color: #fff; }
 .rx-steps span.done { background: var(--ok-100); color: var(--ok); }
 .rx-intro { color: var(--muted); margin: 0 0 18px; }
-.plan-item__review {
-  background: var(--warn); color: #fff; border-radius: 8px; padding: 7px 14px;
-  font-size: 13.5px; font-weight: 700; text-decoration: none; white-space: nowrap;
-}
-.plan-item__review:hover { background: #9a6708; text-decoration: none; }
 
 /* Resumen */
 .rx-sum-block { background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--blue); border-radius: var(--radius); padding: 18px 22px; margin-bottom: 14px; box-shadow: var(--shadow); }

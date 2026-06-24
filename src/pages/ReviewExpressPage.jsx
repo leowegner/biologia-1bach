@@ -16,16 +16,21 @@ export default function ReviewExpressPage() {
   const [answers, setAnswers] = useState({})
   const [graded, setGraded] = useState(false)
 
+  // Las preguntas del mini-test, sacadas del examen por sus IDs.
+  // El memo va ANTES de cualquier return condicional (regla de los hooks);
+  // por eso es defensivo con un `unit` que podría no tener review.
+  const questions = useMemo(
+    () => (unit?.review?.questions || [])
+      .map((id) => unit.exam.find((q) => q.id === id))
+      .filter(Boolean),
+    [unit],
+  )
+
   if (!unit || !unit.available || !unit.review) {
     return <Navigate to="/" replace />
   }
 
   const review = unit.review
-  // Las preguntas del mini-test, sacadas del examen por sus IDs.
-  const questions = useMemo(
-    () => review.questions.map((id) => unit.exam.find((q) => q.id === id)).filter(Boolean),
-    [review.questions, unit.exam],
-  )
 
   const setAnswer = (qid, value) => setAnswers((a) => ({ ...a, [qid]: value }))
 

@@ -31,10 +31,6 @@ export function todayEpochDay(now = new Date()) {
   return Math.floor(local.getTime() / 86400000)
 }
 
-export function epochDayToDate(day) {
-  return new Date(day * 86400000)
-}
-
 function readAll() {
   try {
     const raw = localStorage.getItem(KEY)

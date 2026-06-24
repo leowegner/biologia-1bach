@@ -40,5 +40,3 @@ export const units = [
 export function getUnit(id) {
   return units.find((u) => String(u.id) === String(id)) || null
 }
-
-export const availableUnits = units.filter((u) => u.available)
