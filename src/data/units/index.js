@@ -11,6 +11,7 @@
 
 import { unidad0 } from './unidad0.js'
 import { unidad1 } from './unidad1.js'
+import { unidad2 } from './unidad2.js'
 
 // Las unidades que aún no existen se declaran como "placeholders": aparecen
 // bloqueadas en el índice para que se vea el plan completo del curso.
@@ -25,7 +26,7 @@ const placeholder = (id, title) => ({
 export const units = [
   unidad0,
   unidad1,
-  placeholder(2, 'Biomoléculas (II)'),
+  unidad2,
   placeholder(3, 'Célula'),
   placeholder(4, 'Funcionamiento celular'),
   placeholder(5, 'Tejidos'),
